@@ -38,7 +38,6 @@ This repository contains a **console-based notepad application** developed as a 
 | Undo                       | `Alt`                        |
 | View N-Ary tree            | `2`                          |
 | View ChilliMilli tree      | `3`                          |
-|----------------------------|------------------------------|
 
 ---
 
@@ -87,6 +86,8 @@ This repository contains a **console-based notepad application** developed as a 
 
 ## 👨‍💻 Author
 **Hanzlah Mehmood Ch**
+
+[GitHub](https://github.com/hanzlahch)
 
 ---
 
