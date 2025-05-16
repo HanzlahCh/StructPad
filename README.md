@@ -1,33 +1,98 @@
 # Notepad
-# Console-Based Notepad Application
 
-This repository contains a console-based notepad application developed for the Data Structures course at the National University of Computer & Emerging Sciences (NUCES), Islamabad, for Fall 2024. The project implements a fully functional text editor with advanced features like text manipulation, undo/redo, searching, and word/sentence completion, all built using custom data structures.
+## Console-Based Notepad Application
 
-## Project Overview
-- **Description**: A text editor that uses a 2D linked list for character storage, an N-ary tree for efficient searching and word completion, and a Chilli Milli tree for sentence suggestions. No arrays or STL are allowed, emphasizing dynamic memory management and custom implementations.
-- **Features**:
-  - **Text Editing**: Insert text (alphabets only) character-by-character with word wrapping, line breaks, and cursor navigation. Delete characters with backspace, shifting text accordingly.
-  - **Undo/Redo**: Tracks up to 5 recent word-level actions using stacks for reversal and restoration.
-  - **File Operations**: Create, load, save, and exit. Press `Esc` to exit; the program prompts "Yes" to save to a `.txt` file or "No" to exit without saving.
-  - **Searching**: Case-insensitive search with a time complexity of ≤ 1.5*log(n) using an N-ary tree. Press `1` to search for a string, highlights matches in the text, and displays line numbers in the search area.
-  - **Word Completion**: Suggests words based on prior input using the N-ary tree (O(n) complexity). Press `Shift + @` to request suggestions, displayed in the suggestions area for keyboard selection.
-  - **Sentence Completion**: Suggests frequent follow-up words using a Chilli Milli tree (O(n) complexity). Press `Shift + *` to request sentence completion, enhancing user input efficiency.
-  - **Window Layout**: 60% main text area, 20% suggestions area, 20% search area.
+This repository contains a **console-based notepad application** developed as a Data Structures course project at the National University of Computer & Emerging Sciences (NUCES), Islamabad (Fall 2024). It implements a functional text editor with advanced features like **custom undo/redo**, **search**, **word and sentence completion**, and more—**without STL or standard arrays**, emphasizing **dynamic memory structures**.
 
-## How to Run
-1. Clone the repository.
-2. Open the `source.cpp` file in any editor like Visual Studio 2022.
-3. Compile and run the program.
-4. Use the menu to create/load files, edit text, and access features with the following key bindings:
-   - `Esc`: Exit (prompts "Yes" to save the file or "No" to exit).
-   - `1`: Search for a string.
-   - `Shift + @`: Request word completion suggestions.
-   - `Shift + *`: Request sentence completion suggestions.
+---
 
-## Notes
-- Additional key mappings (e.g., save (ctrl), undo (alt)) are intuitive and documented in the code comments.
-- Thoroughly tested for edge cases like empty files, large inputs, and invalid operations.
-- The `main()` function demonstrates all features, including text editing, searching, and completions.
+## 🧠 Core Concepts
 
-## Author
-- Hanzlah Mehmood Ch
+- **2D Linked List**: Stores characters with connections in all directions (up, down, left, right).
+- **N-Ary Tree**: For word search and word completion.
+- **Chilli Milli Tree**: For sentence prediction and completion.
+- **Custom Stack and Circular Buffer**: For undo functionality and cursor tracking.
+- **No STL or built-in containers**: All data structures (linked list, stack, queue, trees) are implemented from scratch.
+
+---
+
+## ✨ Features
+
+### 📝 Text Editing
+- Insert characters (`A-Z`, `a-z`, space) with automatic wrapping.
+- Supports up to 18 lines and 100 characters per line.
+- Handles `Enter` for new lines and `Backspace` for character deletion.
+- Real-time character display with colored output using `Windows.h`.
+
+### ⌨️ Keyboard Shortcuts
+| Action                     | Key                          |
+|----------------------------|------------------------------|
+| Move cursor                | Arrow keys                   |
+| Insert new line            | `Enter`                      |
+| Delete character           | `Backspace`                  |
+| Save file                  | `Ctrl` key                   |
+| Exit                       | `Esc`                        |
+| Search                     | `1`                          |
+| Word completion            | `@` (after word)             |
+| Sentence completion        | `*` (after space)            |
+| Undo                       | `Alt`                        |
+| View N-Ary tree            | `2`                          |
+| View ChilliMilli tree      | `3`                          |
+|----------------------------|------------------------------|
+
+---
+
+### 🔄 Undo (via `Alt`)
+- Undoes the **last word insertion**.
+- Tracks up to **5 words** using a **circular buffer** (custom class `Values`) and a `Stack`.
+- Automatically deletes all characters in a word in reverse.
+
+### 💾 File Operations
+- Create new file: Enter a name and start editing.
+- Load file: Automatically loads text from a `.txt` file into the editor.
+- Save file: Press `Ctrl` or say "Yes" when prompted on exit.
+- Exit: `Esc` key prompts save before quitting.
+
+### 🔍 Searching
+- Press `1`, input a word.
+- Uses an **N-ary tree** for fast searching (case-insensitive).
+- Displays line number if found.
+
+### 🔡 Word Completion (via `@`)
+- Based on **N-ary tree**.
+- Suggests words matching the typed prefix.
+- Suggestions displayed to the right for selection.
+
+### ✏️ Sentence Completion (via `*`)
+- Uses a **ChilliMilli tree** to suggest sentence continuations.
+- Based on previously typed sentence fragments.
+
+---
+
+## ⚙️ How to Run
+
+1. Clone this repository.
+2. Open `Source.cpp` in **Visual Studio 2022** or another Windows-compatible C++ compiler.
+3. Compile and run.
+4. Follow the on-screen menu or use key bindings.
+
+---
+
+## 🔐 Notes
+- Designed to work in **Windows console only** (`<Windows.h>` used).
+- Handles edge cases: full buffer, end of line, empty search results.
+- Does not use STL containers (`std::vector`, `std::stack`, etc. not allowed).
+
+---
+
+## 👨‍💻 Author
+**Hanzlah Mehmood Ch**
+
+---
+
+## ✅ Example Use Cases
+- Fast typing and suggestion experience in CLI
+- Undo accidental words
+- Educational project to learn custom data structures
+
+---
